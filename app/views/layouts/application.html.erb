@@ -8,6 +8,13 @@
 </head>
 <body>
 
+
+<% if logged_in? %>
+  <%= button_to "Log out", session_url, method: :delete %><br>
+<% else %>
+  <%= link_to "Log in", new_session_url %><br>
+<% end %>
+
 <% if flash.now[:errors] %>
   <% flash.now[:errors].each do |error| %>
    <%= error %><br />
@@ -16,12 +23,6 @@
 
 <% if flash[:notice] %>
   <%= flash[:notice] %>
-<% end %>
-
-<% if logged_in? %>
-  <%= button_to "Log out", session_url, method: :delete %>
-<% else %>
-  <%= link_to "Log in", new_session_url %>
 <% end %>
 
 <%= yield %>

@@ -1,0 +1,11 @@
+<h1><%= @album.title %></h1>
+
+<h3>Tracks in this album</h3>
+<ol>
+<% @album.tracks.each do |track| %>
+  <li><a href="<%= track_url(track) %>"><%= track.song %></a></li>
+<% end %>
+</ol>
+<footer>
+<a href="<%= edit_album_url(@album) %>">Edit</a>
+</footer>

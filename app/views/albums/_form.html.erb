@@ -1,0 +1,51 @@
+<% if !album.nil? && album.persisted? %>
+<% str = "Change" %>
+<form action="<%= album_url(album) %>" method="post">
+  <%= csrf_token %>
+  <input type="hidden" name="_method" value="PATCH">
+  <label>Band</label>
+  <select name="album[band_id]">
+    <% bands.each do |band| %>
+      <option value="<%= band.id %>"
+         <%= "selected" if album.band_id == band.id %>>
+         <%= band.name %>
+      </option>
+    <% end %>
+  </select>
+  <br>
+  <label>Title</label>
+  <input type="text" name="album[title]" value="<%= album.title %>">
+  <br>
+  <label>Record Setting</label>
+  <br>
+  <input type="radio"
+         name="album[recording]"
+         value="Studio"
+         <%= "checked" if album.recording == "Studio" %>>Studio<br>
+  <input type="radio"
+         name="album[recording]"
+         value="Live"
+         <%= "checked" if album.recording == "Live" %>>Live
+  <br>
+<% else %>
+<% str = "Create" %>
+<form action="<%= albums_url %>" method="post">
+<%= csrf_token %>
+  <input type="hidden"
+      name="album[band_id]"
+      value="<%= album.band_id %>">
+
+  <label>Title</label>
+  <input type="text" name="album[title]">
+  <br>
+  <label>Record Setting</label>
+  <br>
+  <input type="radio"
+         name="album[recording]"
+         value="Studio">Studio<br>
+  <input type="radio"
+         name="album[recording]"
+         value="Live">Live<br>
+<% end %>
+  <button><%= str %> Album</button>
+</form>

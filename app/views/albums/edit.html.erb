@@ -1,0 +1,4 @@
+<h1>Edit the album: <%= @album.title %></h1>
+<h3>by <%= @band_name %></h3>
+
+<%= render partial: "form", locals: { bands: @bands, album: @album } %>

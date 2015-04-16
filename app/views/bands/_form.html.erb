@@ -1,0 +1,14 @@
+<% if band.persisted? %>
+<% str = "Change name of" %>
+<form action="<%= band_url(band) %>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+<% else %>
+<% str = "Create" %>
+<form action="<%= bands_url %>" method="post">
+<% end %>
+<%= csrf_token %>
+  <label>Name</label>
+  <input type="text" name="band[name]" value="<%= band.name %>">
+  <br>
+  <button><%= str %> Band</button>
+</form>
