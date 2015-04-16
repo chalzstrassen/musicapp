@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+User.create!(email: "a@b.com", password: "password")
+User.create!(email: "b@c.com", password: "password1")
+User.create!(email: "c@gmail.com", password: "pass123")
+
+Band.create!(name: "Jump")
+Band.create!(name: "Scream")
+Band.create!(name: "Attack")
+Band.create!(name: "Kill")
+
+Album.create!(title: "I don't know", band_id: 1, recording: "Studio")
+Album.create!(title: "I don't know 2", band_id: 1, recording: "Studio")
+Album.create!(title: "Trapped", band_id: 2, recording: "Live")
+Album.create!(title: "Scared for Life", band_id: 2, recording: "Studio")
