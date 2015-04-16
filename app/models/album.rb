@@ -4,6 +4,6 @@ class Album < ActiveRecord::Base
   validates :recording,
             inclusion: { in: %(Studio Live), allow_nil: true}
 
-  
   belongs_to :band
+  has_many :tracks, dependent: :destroy
 end
